@@ -9,7 +9,6 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    /* justify-content: center; */
     align-content: center;
     border-bottom: 1px solid rgba(255, 62, 0, 0.1);
     font-weight: 300;
@@ -18,45 +17,62 @@
 
     @media screen and (min-width: $screen-md) {
       flex-direction: row;
+      text-align: start;
       justify-content: space-between;
       margin: 0 1em;
 
     }
-  }
 
-  ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    margin: 0;
-    padding: 0;
+    h4 {
+      margin: 0;
+      line-height: 1.5;
+      text-transform: lowercase;
+    }
 
-    li {}
-  }
+    ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
 
-  a {
-    text-decoration: none;
-    color: $black;
-  }
+      @media screen and (min-width: $screen-md) {}
 
-  .selected {
-    position: relative;
-    display: inline-block;
-  }
+      li {
+        display: inline-block;
+        position: relative;
+        margin: 0 1.5em;
 
-  .selected::after {
-    position: absolute;
-    content: '';
-    width: calc(100% - 1em);
-    height: 2px;
-    background-color: rgb(255, 62, 0);
-    display: block;
-    bottom: -1px;
+        a {
+          &:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: red;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: transform 0.2s ease;
+          }
+
+          &:hover:after,
+          &:focus:after {
+            visibility: visible;
+            transform: scale(1);
+          }
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
   }
 </style>
 
 <nav>
-  <a href=".">Country Boy Custom Birdhouses</a>
+  <h4><a href=".">Country Boy Custom Birdhouses</a></h4>
   <ul>
     <li><a class='{segment === undefined ? "selected" : ""}' href='.'>home</a></li>
     <li><a class='{segment === "about" ? "selected" : ""}' href='about'>about</a></li>
