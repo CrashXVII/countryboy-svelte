@@ -4,11 +4,8 @@
   export let segment;
 </script>
 
-<style>
-  main {
-    display: grid;
-
-  }
+<style lang="scss" global>
+  @import "./styles/global.scss";
 </style>
 
 <Nav {segment} />

@@ -1,60 +1,68 @@
 <script>
-	export let segment;
+  export let segment;
 </script>
 
-<style>
-	nav {
-		border-bottom: 1px solid rgba(255,62,0,0.1);
-		font-weight: 300;
-		padding: 0 1em;
-	}
+<style lang="scss">
+  @import './styles/_variables.scss';
 
-	ul {
-		margin: 0;
-		padding: 0;
-	}
+  nav {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /* justify-content: center; */
+    align-content: center;
+    border-bottom: 1px solid rgba(255, 62, 0, 0.1);
+    font-weight: 300;
+    padding: 1em 0;
+    color: $grey;
 
-	/* clearfix */
-	ul::after {
-		content: '';
-		display: block;
-		clear: both;
-	}
+    @media screen and (min-width: $screen-md) {
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 0 1em;
 
-	li {
-		display: block;
-		float: left;
-	}
+    }
+  }
 
-	.selected {
-		position: relative;
-		display: inline-block;
-	}
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
 
-	.selected::after {
-		position: absolute;
-		content: '';
-		width: calc(100% - 1em);
-		height: 2px;
-		background-color: rgb(255,62,0);
-		display: block;
-		bottom: -1px;
-	}
+    li {}
+  }
 
-	a {
-		text-decoration: none;
-		padding: 1em 0.5em;
-		display: block;
-	}
+  a {
+    text-decoration: none;
+    color: $black;
+  }
+
+  .selected {
+    position: relative;
+    display: inline-block;
+  }
+
+  .selected::after {
+    position: absolute;
+    content: '';
+    width: calc(100% - 1em);
+    height: 2px;
+    background-color: rgb(255, 62, 0);
+    display: block;
+    bottom: -1px;
+  }
 </style>
 
 <nav>
-	<ul>
-		<li><a class='{segment === undefined ? "selected" : ""}' href='.'>home</a></li>
-		<li><a class='{segment === "about" ? "selected" : ""}' href='about'>about</a></li>
+  <a href=".">Country Boy Custom Birdhouses</a>
+  <ul>
+    <li><a class='{segment === undefined ? "selected" : ""}' href='.'>home</a></li>
+    <li><a class='{segment === "about" ? "selected" : ""}' href='about'>about</a></li>
 
-		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
+    <!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
 		     the blog data when we hover over the link or tap it on a touchscreen -->
-		<li><a rel=prefetch class='{segment === "blog" ? "selected" : ""}' href='blog'>blog</a></li>
-	</ul>
+    <li><a rel=prefetch class='{segment === "blog" ? "selected" : ""}' href='blog'>gallery</a></li>
+  </ul>
 </nav>
